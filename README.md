@@ -1,1 +1,3 @@
-# React24_25
+# Curso React 24 25
+ 
+>Ismael Carballo Martin
