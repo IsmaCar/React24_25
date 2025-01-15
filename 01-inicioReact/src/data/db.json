@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "title": "Introducción a Python",
+      "price": 29.99,
+      "tags": ["Python", "Desarrollo Web", "Análisis de Datos"],
+      "img": "url_imagen_1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Fundamentos de JavaScript",
+      "price": 19.99,
+      "tags": ["JavaScript", "Frontend", "Desarrollo Web"],
+      "img": "url_imagen_2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Desarrollo de Aplicaciones con Java",
+      "price": 39.99,
+      "tags": ["Java", "Backend", "Desarrollo de Software"],
+      "img": "url_imagen_3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Curso de C++ para Principiantes",
+      "price": 24.99,
+      "tags": ["C++", "Programación", "Desarrollo de Software"],
+      "img": "url_imagen_4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Avanzado en Ruby on Rails",
+      "price": 49.99,
+      "tags": ["Ruby", "Rails", "Desarrollo Web"],
+      "img": "url_imagen_5.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Introducción a PHP",
+      "price": 14.99,
+      "tags": ["PHP", "Desarrollo Web", "Backend"],
+      "img": "url_imagen_6.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Desarrollo de APIs con Node.js",
+      "price": 34.99,
+      "tags": ["Node.js", "JavaScript", "Backend"],
+      "img": "url_imagen_7.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Data Science con R",
+      "price": 54.99,
+      "tags": ["R", "Análisis de Datos", "Data Science"],
+      "img": "url_imagen_8.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Aprende Swift para iOS",
+      "price": 59.99,
+      "tags": ["Swift", "Desarrollo Móvil", "iOS"],
+      "img": "url_imagen_9.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Programación con Kotlin para Android",
+      "price": 44.99,
+      "tags": ["Kotlin", "Android", "Desarrollo Móvil"],
+      "img": "url_imagen_10.jpg"
+    }
+  ]
+  
