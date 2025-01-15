@@ -1,13 +1,9 @@
 
 let Padre = (props) => {
-  const { info, setInfo, children } = props;
+  const { info, setInfo, children,handleClickEdad } = props;
 
   const handleClick = () => {
     setInfo({...info, nombre:"Pedro"})
-  }
-
-  const handleClickEdad = () => {
-    setInfo((prevInfo)=>({ ...prevInfo, edad: prevInfo.edad + 1}))
   }
 
   return (
@@ -15,8 +11,9 @@ let Padre = (props) => {
     <section>
       <h2>Bienvenido {info.nombre}</h2>
       <p>Edad: {info.edad}</p>
-      {info.edad > 18 && <p>Eres mayor de edad</p>}
-      {info.eddad < 18 && <p>Eres menor de edad</p>}
+      {info.edad >=18 ? <p>Eres mayor de edad</p>
+                     : <p>Eres menor de edad</p>}
+      
       {info.isAdmin && (<p>Es administrador</p>)}
       <div>
         <button onClick={handleClick}>Modificar</button>
