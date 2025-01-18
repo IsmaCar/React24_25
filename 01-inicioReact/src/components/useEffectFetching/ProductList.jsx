@@ -11,11 +11,14 @@ export const ProductList = () => {
         fetchProduct();
     }, [])
 
-    const totalCart = (carrito) => carrito.reduce((acc, product)=> acc + product.price,0)
+    const totalCart = (carrito) => setTotalCarrito(carrito.reduce((acc, product)=> acc + product.price,0))
     
+    useEffect(() => {
+        totalCart(cart)
+    }, [cart])
 
-    const removeCart = (product) => {
-
+    const removeCart = (productId) => {
+        setCart((prevCart)=> prevCart.filter((item) => item.id !== productId))
     }
 
     const fetchProduct = async () => {
@@ -59,8 +62,7 @@ export const ProductList = () => {
                             {
                                 cart.map((product, index) =>
                                     <li key={index}>
-                                        <LiProductCard product={product} index={index}/>
-
+                                        <LiProductCard product={product} index={index} removeCart={removeCart}/>
                                     </li>)
                             }
                         </ul>
