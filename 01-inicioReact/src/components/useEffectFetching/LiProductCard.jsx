@@ -4,7 +4,7 @@ const LiProductCard = (props) => {
   const { product, index, removeCart } = props;
 
 const handleClick = () => {
-  removeCart(product.id)
+  removeCart(product.id) 
 }
   return (
     <ul>
