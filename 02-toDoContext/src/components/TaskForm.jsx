@@ -9,7 +9,7 @@ const TaskForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
     
-        if(event.taskName.trim()) {
+        if(taskName.trim()) {
             addTask({
                 id: Date.now(),
                 title: taskName,
@@ -26,7 +26,7 @@ const TaskForm = () => {
             Agregar tarea
         </h2>
 
-        <input type="text" value={taskname} onChange={(event) => setTaskName(event.target.value)} placeholder="Escribe el nombre de la tarea" className="w-full p-2 mb-4 border border-gray-300 rounded-lg" />
+        <input type="text" value={taskName} onChange={(event) => setTaskName(event.target.value)} placeholder="Escribe el nombre de la tarea" className="w-full p-2 mb-4 border border-gray-300 rounded-lg" />
         <button type="Submit" value="" className="px-4 py-2 bg-blue-500 text-white rounded-lg">
             Agregar
         </button>

@@ -6,9 +6,13 @@ export function PokemonProvider({ children }) {
     //hook
     const [favorites, setFavorites] = useState([])
 
-    const addToFavorite = (pokemon) => {}
+    const addToFavorite = (pokemon) => {
+        setFavorites([...favorites, pokemon])
+    }
 
-    const removeFromFavorite = (pokemonId) => {}
+    const removeFromFavorite = (pokemonId) => {
+        setFavorites(favorites.filter(pokemon => pokemon.id !== pokemonId)) 
+    }
     //funcionalidades del provider
 
     return (
