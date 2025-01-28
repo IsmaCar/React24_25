@@ -1,13 +1,16 @@
 import { createContext, useContext, useState } from "react";
 
-const PokemonContext = createContext();
+export const PokemonContext = createContext();
 
 export function PokemonProvider({ children }) {
     //hook
     const [favorites, setFavorites] = useState([])
 
     const addToFavorite = (pokemon) => {
-        setFavorites([...favorites, pokemon])
+        if(favorites.some(poke => poke.id === pokemon.id)){
+            return;
+        }
+        setFavorites((prevFavoritos)=>[...prevFavoritos, pokemon])
     }
 
     const removeFromFavorite = (pokemonId) => {
@@ -16,7 +19,7 @@ export function PokemonProvider({ children }) {
     //funcionalidades del provider
 
     return (
-        <PokemonContext.Provider value={{}}>
+        <PokemonContext.Provider value={{addToFavorite, removeFromFavorite}}>
             {children}
         </PokemonContext.Provider>
     )

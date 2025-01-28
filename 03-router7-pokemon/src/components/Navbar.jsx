@@ -9,11 +9,11 @@ const Navbar = () => {
      * isActive --> es una prop de react router dom que me dice si la ruta está activa
      */
   return (
-   <nav className='bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg'>
+   <nav className='bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg h-12'>
 
     <div className='container mx-auto flex justify-between items-center'>
 
-        <div className='space-x-4'>
+        <div className='space-x-4 p-2'>
         <NavLink to={ROUTES.HOME} 
         className={({ isActive })=>`text-white hover:text-red-600 ${isActive ? "font-bold":""}`}>
             Inicio App

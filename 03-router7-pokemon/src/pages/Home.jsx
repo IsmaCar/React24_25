@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../routes/paths";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -48,6 +50,17 @@ const Home = () => {
               <h2 className="text-xl font-bold text-center mt-4">
                 {pokemon.name}
               </h2>
+              <div className="flex justify-center space-x-2 mt-4">
+
+                <button className="bg-red-500 text-white px-4 rounded hover:bg-slate-500">
+                  Añadir a favoritos
+                </button>
+                <Link className="bg-green-500 text-white px-4 rounded hover:bg-slate-500"
+                to={`${ROUTES.SEARCH}/${pokemon.name}`}>
+                  ver detalles
+                </Link>
+
+              </div>
             </div>
           </div>
         ))}
