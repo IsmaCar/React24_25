@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                         if(!response.ok) {
                             throw new Error("Error al cargar fecth de pokemons");
                         }
-                        return response.json();
+                        return await response.json();
                     } catch (error) {}
                 },
                 errorElement: <ErrorPage/>

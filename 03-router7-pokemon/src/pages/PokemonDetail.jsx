@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { PokemonContext, usePokemon } from "../context/PokemonContext";
 // para traer la ruta que llega a este componente
 //usamos useParams y useNavigate
 const PokemonDetail = () => {
+  const { addToFavorite } = usePokemon()
   //  pokemon trae la data traves de la funcionalidad loader de react
   // router dom
   const pokemon = useLoaderData();
@@ -51,9 +53,7 @@ const PokemonDetail = () => {
 
           <button
             className="bg-red-500 text-white px-4 py-2 rounded hover:bg-slate-900"
-            onClick={() => {
-              console.log("Añadir a favoritos");
-            }}
+            onClick={() =>addToFavorite(pokemon)}
           >
             Añadir a Favoritos
           </button>
