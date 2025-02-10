@@ -1,8 +1,11 @@
+import { Outlet } from "react-router-dom";
 
-function RootLayout() {
+const RootLayout = () => {
   return (
-    <div>RootLayout</div>
-  )
-}
+    <div className="min-h-screen bg-gray-100">
+      <Outlet />
+    </div>
+  );
+};
 
-export default RootLayout
+export default RootLayout;

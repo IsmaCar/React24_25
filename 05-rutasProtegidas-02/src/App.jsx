@@ -1,11 +1,13 @@
-import './App.css'
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+import { AuthProvider } from "./context/AuthContext";
 
-
-function App() {
-
+const App = () => {
   return (
-   <div className='text-xl text-amber-600'>App</div>
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
   )
-}
+};
 
-export default App
+export default App;
