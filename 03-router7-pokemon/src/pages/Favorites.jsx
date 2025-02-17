@@ -9,7 +9,7 @@ const Favorites = () => {
   const { favorites,removeFromFavorite } = usePokemon();
   
   
-  if(favorites.lenght === 0) {
+  if(favorites.length === 0) {
     return (
       <div className='container mx-auto p-4'>
         <h1 className='text-3xl font-bold mb-6'>Favoritos</h1>

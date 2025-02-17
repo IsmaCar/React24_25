@@ -2,11 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
 import { useFetch } from "../hooks/useFetch";
-import { getImageURL, getMovieDetail } from "../services/tmdb";
+import { getImageURL, getMovieDetail, getMovieVideos } from "../services/tmdb";
+import { useMovie } from "../contexts/FavoritesContext";
 
 const MovieDetail = () => {
   const { id } = useParams();
   const { data, loading, error } = useFetch(() => getMovieDetail(id), [id]);
+  const { data: videos } = useFetch(() => getMovieVideos(id), [id]);
+  const { addToFavorite } = useMovie();
+
+  const trailer = videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   if (error) {
     return (
@@ -19,19 +24,25 @@ const MovieDetail = () => {
     return <PacmanLoader color="#15387b" />;
   }
   return (
-    <article className="max-w-4xl mx-auto">
+    <article className="max-w-4xl mx-auto mt-4">
       <header className="relative h-96 mb-8">
-        <img
-          src={getImageURL(data?.backdrop_path, "original")}
-          alt={data?.title}
-          className="w-full h-full object-cover rounded-lg"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent">
-          <div className="absolute bottom-2 text-white p-6">
-            <h1 className="text-4xl font-bold">{data?.title}</h1>
-          </div>
+      <button 
+        className="absolute top-4 right-4 bg-black p-2 text-2xl rounded-full text-white hover:bg-orange-500 z-1"
+        onClick={() => addToFavorite(data)}
+      >
+        🤍
+      </button>        
+      <img
+        src={getImageURL(data?.backdrop_path, "original")}
+        alt={data?.title}
+        className="w-full h-full object-cover rounded-lg"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent">
+        <div className="flex justify-around absolute bottom-2 text-white p-6">
+          <h1 className="text-4xl font-bold mr-80">{data?.title}</h1>
         </div>
-      </header>
+      </div>
+    </header>
       {/* contenido principal */}
       <div className="grid md:grid-cols-3 gap-8">
         {/* poster */}
@@ -44,21 +55,34 @@ const MovieDetail = () => {
         </div>
         <div className="md:col-span-2 space-y-6">
           <div className="flex items-center gap-4 text-sm text-gray-700">
-            <span className="font-bold mt-4">
+            <span className="font-bold mt-4 bg-gray-300 p-1 rounded-xl">
               {data?.release_date.split("-")[0]}
             </span>
-            <span className="font-bold mt-4">{data?.runtime} minutos</span>
-            <span className="font-bold mt-4">
+            <span className="font-bold mt-4 bg-gray-300 p-1 rounded-xl">{data?.runtime} minutos</span>
+            <span className="font-bold mt-4 bg-gray-300 p-1 rounded-xl">
               {Number(data?.vote_average).toFixed(1)}⭐
             </span>
           </div>
-          <section>generos {data.id}</section>
+          <section>
+            <h3 className="text-lg font-bold">Generos:</h3>
+            {data?.genres?.map(genre => genre.name).join(', ')}
+          </section>
           <section>
             <h2 className="text-2xl font-bold mb-8">Sinopsis</h2>
             <p>{data?.overview}</p>
           </section>
           <section>
-            sección de vídeos
+            <h2 className="text-xl font-bold mb-3">Trailer de la pelicula</h2>
+            {trailer ? (
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                title={trailer.name}
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (<p>No hay tráiler disponible</p>)}
           </section>
         </div>
       </div>
